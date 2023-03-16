@@ -48,12 +48,16 @@ def RH(T,qv,P0,PS,hyam,hybm):
 def ls(data_path = ""):
     return os.popen(" ".join(["ls", data_path])).read().splitlines()
 
-def load_data(month, year, data_path):
-    datasets = ls(data_path)
-    month = str(month).zfill(2)
-    year = str(year).zfill(4)
-    datasets = [data_path + x for x in datasets if "h1." + year + "-" + month in x]
-    return xr.open_mfdataset(datasets)
+####
+# TO - DO: Refactor this function for use with 2i2c
+####
+
+# def load_data(month, year, data_path):
+#     datasets = ls(data_path)
+#     month = str(month).zfill(2)
+#     year = str(year).zfill(4)
+#     datasets = [data_path + x for x in datasets if "h1." + year + "-" + month in x]
+#     return xr.open_mfdataset(datasets)
 
 def sample_indices(size, spacing, fixed = True):
     numIndices = np.round(size/spacing)
